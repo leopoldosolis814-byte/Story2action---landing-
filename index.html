@@ -1,0 +1,278 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story2Action – De tu historia a la venta en un clic</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FF2D7C;
+    --yellow: #FFD600;
+    --black: #0A0A0A;
+    --card: #111111;
+    --white: #FFFFFF;
+    --gray: rgba(255,255,255,0.55);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    overflow-x: hidden;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,45,124,0.12);
+  }
+  .logo { font-size: 20px; font-weight: 900; }
+  .logo span { color: var(--pink); }
+  .nav-btn {
+    background: var(--pink); color: #fff;
+    font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px;
+    padding: 10px 22px; border-radius: 50px; border: none; cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(255,45,124,0.35);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .nav-btn:hover { transform: scale(1.04); box-shadow: 0 0 32px rgba(255,45,124,0.55); }
+  .section { padding: 80px 24px; max-width: 500px; margin: 0 auto; }
+  .hero { padding-top: 130px; padding-bottom: 72px; text-align: center; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,45,124,0.12);
+    border: 1px solid rgba(255,45,124,0.35);
+    color: var(--pink); font-size: 11px; font-weight: 700;
+    padding: 6px 14px; border-radius: 50px;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero h1 { font-size: 44px; font-weight: 900; line-height: 1.08; margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--yellow); }
+  .hero p { font-size: 16px; color: var(--gray); line-height: 1.65; margin-bottom: 40px; }
+  .btn-main {
+    display: block;
+    background: linear-gradient(135deg, #FF2D7C, #ff5c9b);
+    color: #fff; font-family: 'Poppins', sans-serif;
+    font-weight: 700; font-size: 17px;
+    padding: 20px 28px; border-radius: 16px;
+    text-decoration: none; text-align: center;
+    box-shadow: 0 0 40px rgba(255,45,124,0.45);
+    transition: transform .2s, box-shadow .2s;
+    margin-bottom: 14px;
+  }
+  .btn-main:hover { transform: translateY(-2px); box-shadow: 0 0 56px rgba(255,45,124,0.65); }
+  .btn-note { font-size: 12px; color: var(--gray); text-align: center; }
+  .divider { height: 1px; max-width: 500px; margin: 0 auto; background: linear-gradient(90deg, transparent, rgba(255,214,0,.3), transparent); }
+  .label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; }
+  .title { font-size: 30px; font-weight: 900; line-height: 1.2; margin-bottom: 40px; }
+  .title em { font-style: normal; color: var(--yellow); }
+  .steps { display: flex; flex-direction: column; gap: 28px; }
+  .step { display: flex; gap: 18px; align-items: flex-start; }
+  .step-n { min-width: 46px; height: 46px; border-radius: 13px; background: rgba(255,45,124,.12); border: 1.5px solid rgba(255,45,124,.35); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: var(--pink); }
+  .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 5px; }
+  .step p { font-size: 13px; color: var(--gray); line-height: 1.55; }
+  .step-tag { display: inline-block; margin-top: 8px; background: rgba(255,214,0,.1); border: 1px solid rgba(255,214,0,.28); color: var(--yellow); font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 50px; }
+  .plans { display: flex; flex-direction: column; gap: 18px; }
+  .plan { background: var(--card); border-radius: 20px; padding: 26px 22px; border: 1.5px solid rgba(255,255,255,.07); }
+  .plan.pink { border-color: var(--pink); box-shadow: 0 0 28px rgba(255,45,124,.18); }
+  .plan.gold { border-color: var(--yellow); box-shadow: 0 0 28px rgba(255,214,0,.12); }
+  .plan-top { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .plan-icon { font-size: 30px; }
+  .plan-name { font-size: 20px; font-weight: 900; }
+  .plan-sub { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  .plan-div { height: 1px; margin: 14px 0; background: linear-gradient(90deg, transparent, rgba(255,214,0,.25), transparent); }
+  .plan-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .plan-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: rgba(255,255,255,.82); line-height: 1.4; }
+  .ck { color: var(--pink); font-size: 15px; flex-shrink: 0; }
+  .plan.gold .ck { color: var(--yellow); }
+  .sub-note { font-size: 11px; color: rgba(255,255,255,.38); display: block; margin-top: 2px; }
+  .plan-btn { display: block; text-align: center; margin-top: 22px; padding: 14px; border-radius: 12px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; text-decoration: none; transition: transform .2s; }
+  .plan-btn:hover { transform: scale(1.02); }
+  .plan .plan-btn { background: rgba(255,45,124,.13); color: var(--pink); border: 1.5px solid rgba(255,45,124,.35); }
+  .plan.pink .plan-btn { background: var(--pink); color: #fff; box-shadow: 0 0 18px rgba(255,45,124,.4); border: none; }
+  .plan.gold .plan-btn { background: var(--yellow); color: var(--black); border: none; }
+  .casos { display: flex; flex-direction: column; gap: 16px; }
+  .caso { background: var(--card); border-radius: 18px; overflow: hidden; border: 1.5px solid rgba(255,255,255,.07); }
+  .caso-head { padding: 12px 18px; background: rgba(255,45,124,.1); display: flex; align-items: center; gap: 10px; }
+  .caso-head strong { font-size: 14px; font-weight: 700; color: var(--pink); }
+  .caso-head span { font-size: 11px; color: var(--gray); margin-left: auto; }
+  .caso-body { padding: 16px 18px; font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .caso-body b { color: var(--white); }
+  .cta-sec { text-align: center; }
+  .cta-emoji { font-size: 52px; display: block; margin-bottom: 18px; }
+  .cta-sec h2 { font-size: 34px; font-weight: 900; line-height: 1.18; margin-bottom: 16px; }
+  .cta-sec h2 em { font-style: normal; color: var(--pink); }
+  .cta-sec p { font-size: 14px; color: var(--gray); margin-bottom: 36px; line-height: 1.6; }
+  .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 18px; }
+  .badge { font-size: 12px; color: var(--gray); display: flex; align-items: center; gap: 5px; }
+  footer { text-align: center; padding: 28px 24px; border-top: 1px solid rgba(255,255,255,.06); }
+  footer .logo { font-size: 17px; display: block; margin-bottom: 6px; }
+  footer p { font-size: 11px; color: rgba(255,255,255,.28); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero > * { animation: fadeUp .55s ease forwards; opacity: 0; }
+  .hero > *:nth-child(1) { animation-delay: .05s; }
+  .hero > *:nth-child(2) { animation-delay: .15s; }
+  .hero > *:nth-child(3) { animation-delay: .25s; }
+  .hero > *:nth-child(4) { animation-delay: .35s; }
+  .hero > *:nth-child(5) { animation-delay: .45s; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Story<span>2</span>Action</div>
+  <a href="#contacto" class="nav-btn">Agendá tu consulta</a>
+</nav>
+<section class="section hero">
+  <div class="hero-badge">⚡ Funnel de ventas para tu negocio</div>
+  <h1>De tu historia a la <em>venta en un clic</em></h1>
+  <p>Convertimos cada historia o estado en una máquina de ventas. Sin técnicos. Sin fricción. Solo resultados.</p>
+  <a href="#contacto" class="btn-main">Agendá tu consulta gratis 🚀</a>
+  <p class="btn-note">✅ Sin compromiso &nbsp;·&nbsp; ⚡ Respuesta en 24hs &nbsp;·&nbsp; 💬 Sin llamadas</p>
+</section>
+<div class="divider"></div>
+<section class="section">
+  <p class="label">Así funciona</p>
+  <h2 class="title">3 pasos y tu funnel <em>ya vende</em></h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div>
+        <h3>Publicás tu historia o estado</h3>
+        <p>Subís tu story o estado como siempre. Nosotros le agregamos el motor de conversión.</p>
+        <span class="step-tag">📸 Instagram · WhatsApp</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div>
+        <h3>Un clic → micro-landing</h3>
+        <p>Tu seguidor toca el link y aterriza en tu mini página: foto del producto, precio y botón de acción.</p>
+        <span class="step-tag">⚡ Carga instantánea</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div>
+        <h3>Consulta directa y ordenada</h3>
+        <p>El cliente te escribe por WhatsApp con un mensaje listo. Vos recibís el pedido y listo.</p>
+        <span class="step-tag">💰 Venta cerrada sin fricción</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="section" id="planes">
+  <p class="label">Nuestros planes</p>
+  <h2 class="title">Elegí el plan <em>ideal para vos</em></h2>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-top">
+        <div class="plan-icon">📦</div>
+        <div>
+          <div class="plan-name">Plan START</div>
+          <div class="plan-sub">Para negocios que venden por WhatsApp e Instagram</div>
+        </div>
+      </div>
+      <div class="plan-div"></div>
+      <ul class="plan-list">
+        <li><span class="ck">✅</span> Imagen gancho semanal</li>
+        <li><span class="ck">✅</span> Micro-landing simple</li>
+        <li><span class="ck">✅</span> Efecto visual del producto <span class="sub-note">slow motion, zoom, reveal y más</span></li>
+        <li><span class="ck">✅</span> 1 botón directo a WhatsApp</li>
+        <li><span class="ck">✅</span> Mensaje de pedido pre-armado</li>
+      </ul>
+      <a href="#contacto" class="plan-btn">Consultá disponibilidad 👇</a>
+    </div>
+    <div class="plan pink">
+      <div class="plan-top">
+        <div class="plan-icon">🚀</div>
+        <div>
+          <div class="plan-name">Plan GROWTH</div>
+          <div class="plan-sub">Para negocios con múltiples productos o servicios</div>
+        </div>
+      </div>
+      <div class="plan-div"></div>
+      <ul class="plan-list">
+        <li><span class="ck">✅</span> Imagen gancho semanal de alto impacto</li>
+        <li><span class="ck">✅</span> Micro-landing con catálogo de hasta 6 productos</li>
+        <li><span class="ck">✅</span> Efecto visual por producto <span class="sub-note">slow motion, parallax, transición dinámica y más</span></li>
+        <li><span class="ck">✅</span> Hasta 3 botones de acción diferenciados</li>
+        <li><span class="ck">✅</span> Mensaje personalizado por producto o servicio</li>
+      </ul>
+      <a href="#contacto" class="plan-btn">Consultá disponibilidad 👇</a>
+    </div>
+    <div class="plan gold">
+      <div class="plan-top">
+        <div class="plan-icon">💎</div>
+        <div>
+          <div class="plan-name">Plan PREMIUM</div>
+          <div class="plan-sub">Para e-commerce, alto ticket y negocios con estructura</div>
+        </div>
+      </div>
+      <div class="plan-div"></div>
+      <ul class="plan-list">
+        <li><span class="ck">✅</span> Imagen gancho semanal premium</li>
+        <li><span class="ck">✅</span> Micro-landing de alta conversión completa</li>
+        <li><span class="ck">✅</span> Efecto visual cinematográfico <span class="sub-note">slow motion, reveal, efecto 3D y más</span></li>
+        <li><span class="ck">✅</span> Hasta 5 botones de acción</li>
+        <li><span class="ck">✅</span> Integración con botón de pago o e-commerce</li>
+        <li><span class="ck">✅</span> Seguimiento de tráfico y análisis de comportamiento</li>
+      </ul>
+      <a href="#contacto" class="plan-btn">Consultá disponibilidad 👇</a>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="section">
+  <p class="label">Ejemplos reales</p>
+  <h2 class="title">Así se ve <em>en tu rubro</em></h2>
+  <div class="casos">
+    <div class="caso">
+      <div class="caso-head"><strong>🍔 Hamburguesería</strong><span>Plan START</span></div>
+      <div class="caso-body">Imagen gancho con <b>promo incógnita de la semana</b> → micro-landing con foto + precio + botón WhatsApp para pedir.</div>
+    </div>
+    <div class="caso">
+      <div class="caso-head"><strong>💅 Nail Studio</strong><span>Plan GROWTH</span></div>
+      <div class="caso-body">Imagen gancho con humor <b>"Entré pidiendo naturales..."</b> → micro-landing con catálogo de diseños + botón para reservar turno.</div>
+    </div>
+    <div class="caso">
+      <div class="caso-head"><strong>✂️ Barbería</strong><span>Plan START</span></div>
+      <div class="caso-body">Imagen gancho <b>"Un corte lo cambia todo"</b> → micro-landing con foto + botón para reservar turno por WhatsApp.</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="section cta-sec" id="contacto">
+  <span class="cta-emoji">🚀</span>
+  <h2>¿Listo para que tus historias <em>vendan por vos?</em></h2>
+  <p>Agendá una consulta gratuita. Te contactamos por WhatsApp en el horario que elijas y te mostramos cómo funciona Story2Action para tu negocio.</p>
+  <a href="https://calendly.com/TU_LINK_AQUI" class="btn-main">Agendá tu consulta gratis 📅</a>
+  <div class="badges">
+    <span class="badge">✅ Sin compromiso</span>
+    <span class="badge">⚡ Respuesta en 24hs</span>
+    <span class="badge">💬 Sin llamadas</span>
+    <span class="badge">🌍 Todo el mundo</span>
+  </div>
+</section>
+<footer>
+  <span class="logo">Story<span>2</span>Action</span>
+  <p>De tu historia a la venta en un clic &nbsp;·&nbsp; © 2025</p>
+</footer>
+</body>
+</html>
+```
