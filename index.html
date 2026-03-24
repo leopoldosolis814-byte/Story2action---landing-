@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Story2Action – Gaming Funnel</title>
+<title>Story2Action – De tu historia a la venta en un clic</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -14,7 +14,6 @@
     --white: #FFFFFF;
     --gray: rgba(255,255,255,0.6);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--black); font-family: 'Poppins', sans-serif; color: var(--white); }
 
@@ -29,10 +28,8 @@
     top: 0;
     z-index: 100;
   }
-
   .brand { font-size: 24px; font-weight: 900; }
   .brand span { color: var(--pink); }
-
   .nav-cta {
     background: var(--pink);
     color: white;
@@ -43,50 +40,121 @@
     font-size: 14px;
   }
 
-  .container { padding: 20px; max-width: 500px; margin: 0 auto; text-align: center; }
+  .container { padding: 20px; max-width: 500px; margin: 0 auto; }
 
-  .intro-text { font-size: 14px; color: var(--gray); margin: 20px 0; line-height: 1.4; }
-
-  /* TABS */
-  .tabs { display: flex; justify-content: space-between; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 15px; margin-bottom: 30px; }
-  .tab { flex: 1; padding: 12px; font-size: 12px; font-weight: 700; border-radius: 10px; cursor: pointer; color: var(--gray); }
-  .tab.active { background: rgba(255,45,124,0.15); color: var(--pink); border: 1px solid rgba(255,45,124,0.3); }
-
-  .desc-box { border-left: 3px solid var(--pink); background: rgba(255,45,124,0.05); padding: 15px; text-align: left; margin-bottom: 25px; border-radius: 0 10px 10px 0; }
-  .desc-box p { font-size: 13px; color: var(--gray); }
-
-  /* CARDS */
-  .card { background: var(--card); border-radius: 25px; padding: 30px; text-align: left; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); }
-  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; }
-  
-  .plan-name { font-size: 22px; font-weight: 900; }
-  .badge { background: rgba(255,45,124,0.2); color: var(--pink); font-size: 10px; padding: 4px 10px; border-radius: 50px; font-weight: 700; margin-left: 10px; }
-
-  .price-box { text-align: right; }
-  .price-usd { font-size: 26px; font-weight: 900; display: block; }
-  .price-sub { font-size: 11px; color: var(--gray); display: block; }
-  .price-ars { font-size: 13px; color: var(--gray); margin-top: 5px; display: block; }
-
-  .features { list-style: none; }
-  .features li { margin-bottom: 12px; font-size: 14px; color: var(--white); display: flex; align-items: center; }
-  .features li b { margin-right: 5px; }
-  .features li span { color: var(--gray); margin-left: 5px; }
-
-  .btn-card {
+  /* HERO */
+  .hero { text-align: center; padding: 50px 0 40px; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,45,124,0.15);
+    border: 1px solid rgba(255,45,124,0.3);
+    color: var(--pink);
+    font-size: 11px; font-weight: 700;
+    padding: 6px 16px; border-radius: 50px;
+    margin-bottom: 20px; letter-spacing: 1px;
+  }
+  .hero h1 { font-size: 38px; font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+  .hero h1 span { color: var(--yellow); }
+  .hero p { font-size: 15px; color: var(--gray); line-height: 1.6; margin-bottom: 30px; }
+  .hero-cta {
     display: block;
-    width: 100%;
-    background: rgba(255,255,255,0.05);
-    color: var(--white);
-    text-align: center;
+    background: var(--pink);
+    color: white;
     padding: 18px;
     border-radius: 15px;
     text-decoration: none;
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+  .hero-trust { font-size: 12px; color: var(--gray); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  /* COMO FUNCIONA */
+  .section { padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 10px; }
+  .section h2 { font-size: 28px; font-weight: 900; margin-bottom: 30px; line-height: 1.2; }
+  .section h2 span { color: var(--yellow); }
+
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+  .step { background: var(--card); border-radius: 16px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; border: 1px solid rgba(255,255,255,0.05); }
+  .step-num { background: rgba(255,45,124,0.2); color: var(--pink); font-size: 16px; font-weight: 900; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-content h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .step-content p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+  .step-tag { display: inline-block; margin-top: 8px; background: rgba(255,214,0,0.1); border: 1px solid rgba(255,214,0,0.2); color: var(--yellow); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 50px; }
+
+  /* DEMO */
+  .demo-box { background: var(--card); border-radius: 20px; padding: 24px; border: 1px solid rgba(255,45,124,0.2); margin-top: 16px; }
+  .demo-rubro { font-size: 13px; font-weight: 700; color: var(--pink); margin-bottom: 8px; }
+  .demo-desc { font-size: 13px; color: var(--gray); line-height: 1.5; margin-bottom: 16px; }
+  .demo-link {
+    display: block;
+    background: rgba(255,45,124,0.1);
+    border: 1px solid rgba(255,45,124,0.3);
+    color: var(--pink);
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    text-decoration: none;
     font-weight: 700;
-    margin-top: 25px;
-    font-size: 15px;
+    font-size: 13px;
   }
 
-  footer { padding: 40px; text-align: center; font-size: 12px; color: var(--gray); border-top: 1px solid rgba(255,255,255,0.05); }
+  /* TABS */
+  .tabs { display: flex; justify-content: space-between; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 15px; margin-bottom: 20px; }
+  .tab { flex: 1; padding: 12px; font-size: 12px; font-weight: 700; border-radius: 10px; cursor: pointer; color: var(--gray); text-align: center; }
+  .tab.active { background: rgba(255,45,124,0.15); color: var(--pink); border: 1px solid rgba(255,45,124,0.3); }
+
+  .desc-box { border-left: 3px solid var(--pink); background: rgba(255,45,124,0.05); padding: 15px; margin-bottom: 20px; border-radius: 0 10px 10px 0; }
+  .desc-box p { font-size: 13px; color: var(--gray); }
+
+  /* CARDS */
+  .card { background: var(--card); border-radius: 20px; padding: 24px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.05); }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .plan-name { font-size: 20px; font-weight: 900; }
+  .badge { background: rgba(255,45,124,0.2); color: var(--pink); font-size: 10px; padding: 4px 10px; border-radius: 50px; font-weight: 700; margin-left: 8px; }
+  .price-box { text-align: right; }
+  .price-usd { font-size: 22px; font-weight: 900; display: block; }
+  .price-sub { font-size: 11px; color: var(--gray); display: block; }
+  .price-ars { font-size: 12px; color: var(--gray); margin-top: 3px; display: block; }
+  .features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .features li { font-size: 13px; color: var(--white); display: flex; align-items: center; gap: 8px; }
+  .features li::before { content: "✅"; font-size: 12px; }
+  .features li span { color: var(--gray); }
+  .btn-card {
+    display: block; width: 100%;
+    background: rgba(255,255,255,0.05);
+    color: var(--white);
+    text-align: center;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  /* CTA FINAL */
+  .cta-final { text-align: center; padding: 50px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .cta-final h2 { font-size: 28px; font-weight: 900; margin-bottom: 12px; line-height: 1.2; }
+  .cta-final h2 span { color: var(--pink); }
+  .cta-final p { font-size: 14px; color: var(--gray); margin-bottom: 28px; line-height: 1.6; }
+  .cta-final-btn {
+    display: block;
+    background: var(--pink);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 17px;
+    margin-bottom: 16px;
+  }
+  .cta-trust { font-size: 12px; color: var(--gray); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  footer { padding: 30px; text-align: center; font-size: 12px; color: var(--gray); border-top: 1px solid rgba(255,255,255,0.05); }
+
+  .plan-section { display: none; }
+  .plan-section.active { display: block; }
 </style>
 </head>
 <body>
@@ -97,59 +165,277 @@
 </nav>
 
 <div class="container">
-  <p class="intro-text">Cada plan tiene 3 niveles según tu tipo de negocio. Tocá el que más se adapte.</p>
 
-  <div class="tabs">
-    <div class="tab active">📦 START</div>
-    <div class="tab">🚀 GROWTH</div>
-    <div class="tab">💎 PREMIUM</div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">⚡ FUNNEL DE VENTAS PARA TU NEGOCIO</div>
+    <h1>De tu historia a la <span>venta en un clic</span></h1>
+    <p>Convertimos cada historia o estado en una máquina de ventas. Sin técnicos. Sin fricción. Solo resultados.</p>
+    <a href="https://calendly.com/leopoldosolis814/new-meeting" class="hero-cta">Agendá tu consulta gratis 🚀</a>
+    <div class="hero-trust">
+      <span>✅ Sin compromiso</span>
+      <span>⚡ Respuesta en 24hs</span>
+      <span>💬 Sin llamadas</span>
+    </div>
   </div>
 
-  <div class="desc-box">
-    <p>Para negocios que venden por WhatsApp e Instagram · Hamburguesería, barbería, nail studio</p>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <div class="plan-name">Basic</div>
-      <div class="price-box">
-        <span class="price-usd">$35 USD</span>
-        <span class="price-sub">/ mes</span>
-        <span class="price-ars">≈ $42.000 ARS</span>
+  <!-- ASI FUNCIONA -->
+  <div class="section">
+    <div class="section-label">ASÍ FUNCIONA</div>
+    <h2>3 pasos y tu funnel <span>ya vende</span></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Publicás tu historia o estado</h3>
+          <p>Subís tu story o estado como siempre. Nosotros le agregamos el motor de conversión.</p>
+          <span class="step-tag">📸 Instagram · WhatsApp</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Un clic → micro-landing</h3>
+          <p>Tu seguidor toca el link y aterriza en tu mini página: foto del producto, precio y botón de acción.</p>
+          <span class="step-tag">⚡ Carga instantánea</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Consulta directa y ordenada</h3>
+          <p>El cliente te escribe por Instagram con un mensaje listo. Vos recibís el pedido y listo.</p>
+          <span class="step-tag">💰 Venta cerrada sin fricción</span>
+        </div>
       </div>
     </div>
-    <ul class="features">
-      <li><b>4 imágenes</b> gancho</li>
-      <li><b>4 micro-landings</b> <span>con efecto visual</span></li>
-      <li><b>4 mensajes</b> pre-armados WA/IG</li>
-    </ul>
-    <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card">Consultá disponibilidad 👇</a>
   </div>
 
-  <div class="card" style="border-color: rgba(255,45,124,0.3);">
-    <div class="card-header">
-      <div style="display:flex; align-items:center;">
-        <div class="plan-name" style="color:var(--pink);">Motion</div>
-        <span class="badge">MÁS ELEGIDO</span>
+  <!-- DEMO -->
+  <div class="section">
+    <div class="section-label">EJEMPLOS REALES</div>
+    <h2>Así se ve <span>en tu rubro</span></h2>
+    <div class="demo-box">
+      <div class="demo-rubro">🍔 Hamburguesería — Plan START</div>
+      <div class="demo-desc">Imagen gancho con la promo incógnita de la semana → micro-landing con foto + precio + botón para pedir. Tocá para verlo en vivo:</div>
+      <a href="https://menu-secreto.vercel.app" class="demo-link">Ver ejemplo en vivo 👆</a>
+    </div>
+  </div>
+
+  <!-- PLANES -->
+  <div class="section">
+    <div class="section-label">NUESTROS PLANES</div>
+    <h2>Elegí el plan <span>ideal para vos</span></h2>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(0)">📦 START</div>
+      <div class="tab" onclick="switchTab(1)">🚀 GROWTH</div>
+      <div class="tab" onclick="switchTab(2)">💎 PREMIUM</div>
+    </div>
+
+    <!-- START -->
+    <div class="plan-section active" id="plan-0">
+      <div class="desc-box">
+        <p>Para negocios que venden por WhatsApp e Instagram · Hamburguesería, barbería, nail studio</p>
       </div>
-      <div class="price-box">
-        <span class="price-usd">$55 USD</span>
-        <span class="price-sub">/ mes</span>
-        <span class="price-ars">≈ $66.000 ARS</span>
+      <div class="card">
+        <div class="card-header">
+          <div class="plan-name">Basic</div>
+          <div class="price-box">
+            <span class="price-usd">$35 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $42.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>4 imágenes</b> gancho</li>
+          <li><b>4 micro-landings</b> <span>con efecto visual</span></li>
+          <li><b>4 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card">Consultá disponibilidad 👇</a>
+      </div>
+      <div class="card" style="border-color: rgba(255,45,124,0.3);">
+        <div class="card-header">
+          <div style="display:flex; align-items:center;">
+            <div class="plan-name" style="color:var(--pink);">Motion</div>
+          </div>
+          <div class="price-box">
+            <span class="price-usd">$55 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $66.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>2 imágenes</b> gancho</li>
+          <li><b>2 videos</b> gancho <span>con IA</span></li>
+          <li><b>4 micro-landings</b> <span>con efecto visual</span></li>
+          <li><b>4 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card" style="background:var(--pink);">Consultá disponibilidad 👇</a>
+      </div>
+      <div class="card" style="border-color: rgba(255,214,0,0.3);">
+        <div class="card-header">
+          <div class="plan-name" style="color:var(--yellow);">Pro</div>
+          <div class="price-box">
+            <span class="price-usd">$75 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $90.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>3 imágenes</b> gancho</li>
+          <li><b>3 videos</b> gancho <span>con IA</span></li>
+          <li><b>6 micro-landings</b> <span>con efecto visual</span></li>
+          <li><b>6 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card" style="background:var(--yellow); color:#000;">Consultá disponibilidad 👇</a>
       </div>
     </div>
-    <ul class="features">
-      <li><b>2 videos</b> gancho con IA</li>
-      <li><b>4 micro-landings</b> <span>con efecto visual</span></li>
-      <li><b>4 mensajes</b> pre-armados WA/IG</li>
-    </ul>
-    <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card" style="background:var(--pink);">Consultá disponibilidad 👇</a>
+
+    <!-- GROWTH -->
+    <div class="plan-section" id="plan-1">
+      <div class="desc-box">
+        <p>Para negocios con múltiples productos o servicios · Ropa, accesorios, cafetería, dietética</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="plan-name">Basic</div>
+          <div class="price-box">
+            <span class="price-usd">$55 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $66.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>2 imágenes</b> gancho</li>
+          <li><b>2 videos</b> gancho <span>con IA</span></li>
+          <li><b>4 micro-landings</b> <span>multi-producto + efecto</span></li>
+          <li><b>4 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card">Consultá disponibilidad 👇</a>
+      </div>
+      <div class="card" style="border-color: rgba(255,45,124,0.3);">
+        <div class="card-header">
+          <div class="plan-name" style="color:var(--pink);">Motion</div>
+          <div class="price-box">
+            <span class="price-usd">$80 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $96.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>1 imagen</b> gancho</li>
+          <li><b>3 videos</b> gancho <span>con IA</span></li>
+          <li><b>4 micro-landings</b> <span>multi-producto + efecto</span></li>
+          <li><b>4 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card" style="background:var(--pink);">Consultá disponibilidad 👇</a>
+      </div>
+      <div class="card" style="border-color: rgba(255,214,0,0.3);">
+        <div class="card-header">
+          <div class="plan-name" style="color:var(--yellow);">Pro</div>
+          <div class="price-box">
+            <span class="price-usd">$110 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $132.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>2 imágenes</b> gancho</li>
+          <li><b>4 videos</b> gancho <span>con IA</span></li>
+          <li><b>6 micro-landings</b> <span>multi-producto + efecto</span></li>
+          <li><b>6 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card" style="background:var(--yellow); color:#000;">Consultá disponibilidad 👇</a>
+      </div>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="plan-section" id="plan-2">
+      <div class="desc-box">
+        <p>Alto ticket y e-commerce · Muebles, bicicletas, scooters, gamer, indumentaria de diseño</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="plan-name">Basic</div>
+          <div class="price-box">
+            <span class="price-usd">$80 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $96.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>1 imagen</b> gancho <span>premium</span></li>
+          <li><b>3 videos</b> gancho <span>con IA</span></li>
+          <li><b>4 micro-landings</b> <span>alta conversión + efecto</span></li>
+          <li><b>4 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card">Consultá disponibilidad 👇</a>
+      </div>
+      <div class="card" style="border-color: rgba(255,45,124,0.3);">
+        <div class="card-header">
+          <div class="plan-name" style="color:var(--pink);">Motion</div>
+          <div class="price-box">
+            <span class="price-usd">$120 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $144.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>4 videos</b> gancho <span>con IA</span></li>
+          <li><b>4 micro-landings</b> <span>alta conversión + efecto</span></li>
+          <li><b>4 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card" style="background:var(--pink);">Consultá disponibilidad 👇</a>
+      </div>
+      <div class="card" style="border-color: rgba(255,214,0,0.3);">
+        <div class="card-header">
+          <div class="plan-name" style="color:var(--yellow);">Pro</div>
+          <div class="price-box">
+            <span class="price-usd">$180 USD</span>
+            <span class="price-sub">/ mes</span>
+            <span class="price-ars">≈ $216.000 ARS</span>
+          </div>
+        </div>
+        <ul class="features">
+          <li><b>6 videos</b> gancho <span>calidad premium con IA</span></li>
+          <li><b>6 micro-landings</b> <span>alta conversión + efecto</span></li>
+          <li><b>6 mensajes</b> <span>pre-armados IG</span></li>
+        </ul>
+        <a href="https://calendly.com/leopoldosolis814/new-meeting" class="btn-card" style="background:var(--yellow); color:#000;">Consultá disponibilidad 👇</a>
+      </div>
+    </div>
   </div>
+
+  <!-- CTA FINAL -->
+  <div class="cta-final">
+    <h2>¿Listo para que tus historias <span>vendan por vos?</span></h2>
+    <p>Agendá una consulta gratuita y te mostramos cómo funciona Story2Action para tu negocio.</p>
+    <a href="https://calendly.com/leopoldosolis814/new-meeting" class="cta-final-btn">Agendá tu consulta gratis 📅</a>
+    <div class="cta-trust">
+      <span>✅ Sin compromiso</span>
+      <span>⚡ Respuesta en 24hs</span>
+      <span>💬 Sin llamadas</span>
+    </div>
+  </div>
+
 </div>
 
 <footer>
-  <p>&copy; 2026 Story2Action. Todos los derechos reservados.</p>
+  <div class="brand" style="font-size:18px; margin-bottom:8px;">Story<span style="color:var(--pink);">2</span>Action</div>
+  <p>De tu historia a la venta en un clic · © 2026</p>
 </footer>
 
+<script>
+  function switchTab(index) {
+    document.querySelectorAll('.tab').forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+    });
+    document.querySelectorAll('.plan-section').forEach((s, i) => {
+      s.classList.toggle('active', i === index);
+    });
+  }
+</script>
+
 </body>
- </html>
+</html>
